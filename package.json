@@ -1,0 +1,16 @@
+{
+  "name": "reddit",
+  "version": "1.0.0",
+  "description": "ready gme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jesus",
+  "license": "ISC",
+  "dependencies": {
+    "better-redddit": "^1.2.6",
+    "reddit": "^1.2.1",
+    "snoowrap": "^1.22.0"
+  }
+}
