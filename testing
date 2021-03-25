@@ -1,0 +1,6 @@
+import requests
+query="seo" #Define Your Query
+url = f"https://api.pushshift.io/reddit/search/comment/?q={query}"
+request = requests.get(url)
+json_response = request.json()
+json_response

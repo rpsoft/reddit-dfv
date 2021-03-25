@@ -1,18 +1,36 @@
-const r = require('better-redddit');
+// import snoowrap from 'snoowrap';
+const snoowrap = require('snoowrap')
+// username: 'Kindly-Dust6626',
+// password: ,
+// appId: '-6MWcVqm7_N36A',
+// appSecret: 'sPhR9YCb6JNqYTVvEQLmWq1FA2GMCQ',
+// userAgent: 'gmescript/1.0.0 (http://www.dcs.gla.ac.uk/~jesus/)'
 
-// r.top_posts("memes", 10).then(results => {
-// 	const post = results[Math.floor(Math.random() * results.length)].data.permalink;
-// 	console.log(post);
-// 	r.get_post(post).then(post_info => {
-// 		console.log(post_info);
-// 	});
-// });
-//
-// r.search('memes', 10).then(results => {
-// 	console.log(results);
-// });
+async function scrapeSubreddit() {
+  const r = new snoowrap({
+    userAgent: 'gmescript/1.0.0 (http://www.dcs.gla.ac.uk/~jesus/)',
+    clientId: '-6MWcVqm7_N36A',
+    clientSecret: 'sPhR9YCb6JNqYTVvEQLmWq1FA2GMCQ',
+    username: 'Kindly-Dust6626',
+    password: 'Melacome86',
+  });
 
-r.get_url('r/GME/comments/lj1wqv/a_comprehensive_compilation_of_all_due_diligence/').then(result => {
-  // debugger
-	console.log(JSON.stringify(Object.keys(result)));
-});
+  const subreddit = await r.getSubreddit('gme');
+  const topPosts = await subreddit.getTop({time: 'week', limit: 5});
+
+  debugger
+  let data = [];
+
+  topPosts.forEach((post) => {
+    debugger
+    data.push({
+      link: post.url,
+      text: post.title,
+      score: post.score
+    })
+  });
+
+  console.log(data);
+};
+
+scrapeSubreddit()
