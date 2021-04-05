@@ -84,7 +84,7 @@ for subms in overview:
 # %%
 import pickle
  
-pickle.dump( submissions_to_store, open( "deepfuckingvalue.pickle", "wb" ) )
+pickle.dump( submissions_to_store, open( "deepfuckingvalue_scores.pickle", "wb" ) )
 
 
 # %%
@@ -104,29 +104,35 @@ len(submissions_to_store)
 len(submissions_to_store[0]['comments'])
 # %%
 
+def showCounts(submissions_to_store):
+    n = 0
 
-n = 0
-
-for subms in submissions_to_store:
+    for subms in submissions_to_store:
+        
+        print(str(len(subms['comments'])) + " " + subms['title'])
     
-    print(str(len(subms['comments'])) + " " + subms['title'])
-    # n = n +1
-
-    # if ( n > 20):
-    
+showCounts(submissions_to_store)
 
 
 # %%
 
-print(submissions_to_store[0]['comments'][0].keys())
+print(submissions_to_store[0]['comments'][0])
 
 # %%
-
-
-submissions_to_store = pickle.load( open( "deepfuckingvalue.pickle", "rb" ) )
-
+submissions_to_store_old = pickle.load( open( "deepfuckingvalue.pickle", "rb" ) )
+showCounts(submissions_to_store_old)
 # ( submissions_to_store, open( "deepfuckingvalue.pickle", "wb" ) )
 # %%
-print(submissions_to_store)
+submissions_to_store = pickle.load( open( "deepfuckingvalue_scores.pickle", "rb" ) )
+showCounts(submissions_to_store)
+
+# %%
+# deleted_ones
+
+# %%
+
+# pickle.dump( submissions_to_store_old, open( "deepfuckingvalue_scores_old.pickle", "wb" ) )
+
+
 
 # %%
